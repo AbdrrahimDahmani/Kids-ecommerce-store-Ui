@@ -1,0 +1,45 @@
+mat-card {
+  font-family: "Roboto", sans-serif;
+  margin-top: 1.5rem;
+  width: 97%;
+  height: 21rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 3.5px #641fa0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.promo {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.promo-ico img {
+  width: 80px;
+}
+
+.promo-date {
+  background-color: #641fa0;
+  color: white;
+  width: 170px;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px 0;
+  border-radius: 4px;
+}
+.promotion-text {
+  margin-top: 24px;
+}
+.promotion-text h2 {
+  font-size: x-large;
+
+  letter-spacing: 0.5px;
+  font-family: "Poppins", sans-serif;
+
+  font-weight: 600;
+}

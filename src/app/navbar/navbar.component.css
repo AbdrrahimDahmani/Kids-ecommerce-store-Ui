@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.nav-contact {
+  background-color: #641fa0;
+  color: white;
+  font-size: 70%;
+  height: 2.5rem;
+}
+.nav-contact .icons {
+  margin-right: 120px;
+}
+.nav-contact .icons img {
+  margin-left: 15px;
+}
+.nav-contact .icons a {
+  font-style: none;
+  color: white;
+  text-decoration: none;
+}
+.text-livraison {
+  font-family: "Roboto", sans-serif;
+  padding-left: 60px;
+}
+.text-promo {
+  background-color: #d837e3;
+  padding: 2px 5px 2px 5px;
+}
+
+.nav-search {
+  height: 12vh;
+  background-color: #fdfdfd;
+  display: flex;
+  align-items: center;
+  border-bottom: solid #dddde0 1px;
+}
+.logo img {
+  width: 90px;
+  margin-left: 15px;
+}
+#search-form .search-input input {
+  width: 58vw;
+  height: 7vh !important;
+  background-color: #f5f6f7;
+  border-style: none;
+  border-radius: 3vh;
+  padding-left: 15px;
+  margin-left: 4vw;
+}
+.search-input {
+  position: relative;
+}
+#search-form .search-input mat-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.phone .back {
+  background-color: #f5f6f7;
+  height: 7vh;
+  width: 7vh;
+  border-radius: 100%;
+  padding: 14px 11px 11px 13px;
+  margin-right: 10px;
+  margin-left: 32px;
+}
+.phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phone-num {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+}
+.phone-num a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: large;
+}
+.phone-num span {
+  font-weight: normal;
+  font-size: medium;
+}
+.cart a img {
+  width: 28px;
+  margin-left: 132px;
+}
+.nav-categorie {
+  background-color: #fdfdfd;
+  border-bottom: solid #dddde0 1px;
+  height: 55;
+}
+.categorie-bar {
+  display: flex;
+}
+.categorie-bar div {
+  margin-left: 42px;
+  font-size: 85%;
+  font-weight: 550;
+}
