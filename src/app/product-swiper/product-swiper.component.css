@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+.swiper-slide {
+  width: 220px !important;
+
+  margin-right: 15px;
+}
+.swiper-slide mat-card {
+  /* height: 40vh; */
+  box-shadow: none;
+  width: 228px;
+}
+
+swiper-container {
+  width: 95%;
+}
+
+/* image div*/
+.swiper-slide mat-card img {
+  height: 222px;
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+.swiper-slide mat-card img:hover {
+  filter: brightness(75%);
+}
+
+/* prices  div*/
+.swiper-slide mat-card mat-card-content .prices {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.swiper-slide mat-card mat-card-content .prices .main-price {
+  color: #ec3c74;
+  font-family: "Poppins", sans-serif;
+
+  font-size: 15px;
+  margin-right: 8px;
+  font-weight: bold;
+}
+.swiper-slide mat-card mat-card-content .prices .promo-price {
+  color: #6b8c9c;
+  font-family: "Poppins", sans-serif;
+  text-decoration: line-through;
+  font-size: 12px;
+}

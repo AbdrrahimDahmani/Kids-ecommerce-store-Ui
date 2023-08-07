@@ -1,12 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 .nav-contact {
   background-color: #641fa0;
   color: white;
   font-size: 70%;
-  height: 2.5rem;
+  height: 2.7rem;
+}
+.text-livraison {
+  font-family: "Roboto", sans-serif;
+  padding-left: 80px;
 }
 .nav-contact .icons {
-  margin-right: 120px;
+  padding-right: 80px;
 }
 .nav-contact .icons img {
   margin-left: 15px;
@@ -16,41 +21,44 @@
   color: white;
   text-decoration: none;
 }
-.text-livraison {
-  font-family: "Roboto", sans-serif;
-  padding-left: 60px;
-}
+
 .text-promo {
   background-color: #d837e3;
   padding: 2px 5px 2px 5px;
 }
 
+/*search */
+
 .nav-search {
-  height: 12vh;
+  height: 14vh;
   background-color: #fdfdfd;
   display: flex;
   align-items: center;
   border-bottom: solid #dddde0 1px;
 }
 .logo img {
-  width: 90px;
-  margin-left: 15px;
+  width: 100px;
+  margin-top: 15px;
+  margin-left: 22px;
+
+  margin-bottom: 8px;
 }
 #search-form .search-input input {
   width: 58vw;
-  height: 7vh !important;
+  height: 6vh !important;
   background-color: #f5f6f7;
   border-style: none;
   border-radius: 3vh;
   padding-left: 15px;
   margin-left: 4vw;
+  font-size: medium;
 }
 .search-input {
   position: relative;
 }
 #search-form .search-input mat-icon {
   position: absolute;
-  top: 14px;
+  top: 10px;
   right: 14px;
 }
 
@@ -87,16 +95,26 @@
   width: 28px;
   margin-left: 132px;
 }
+
+/* navbar des categories*/
 .nav-categorie {
   background-color: #fdfdfd;
   border-bottom: solid #dddde0 1px;
-  height: 55;
+  height: 50px;
+  font-family: "Poppins", sans-serif;
+  /* font-weight: bolder; */
+  font-size: large;
 }
 .categorie-bar {
   display: flex;
 }
 .categorie-bar div {
-  margin-left: 42px;
+  margin-left: 30px;
   font-size: 85%;
   font-weight: 550;
+}
+.categorie-bar div img {
+  padding-right: 5px;
+  text-align: center;
+  padding-bottom: 5px;
 }

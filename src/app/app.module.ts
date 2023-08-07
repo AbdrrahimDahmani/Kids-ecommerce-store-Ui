@@ -48,7 +48,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { scheduled } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -56,10 +55,18 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { PromotionCardComponent } from './promotion-card/promotion-card.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { ProductCardComponent } from './product-card/product-card.component';
+// import function to register Swiper custom elements
+import { ProductSwiperComponent } from './product-swiper/product-swiper.component';
+import { register } from 'swiper/element/bundle';
+
 registerLocaleData(localeFr, 'fr');
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, PromotionCardComponent, ProductCardComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    PromotionCardComponent,
+    ProductSwiperComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -115,5 +122,7 @@ export class AppModule {
   /**
    *
    */
-  constructor(library: FaIconLibrary) {}
+  constructor() {
+    register();
+  }
 }
