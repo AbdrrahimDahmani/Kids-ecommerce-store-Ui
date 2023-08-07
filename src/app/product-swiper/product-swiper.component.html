@@ -12,11 +12,11 @@
     --swiper-navigation-sides-offset: 10px;
   "
 >
-  <div class="swiper-slide" *ngFor="let product of promoProducts">
+  <div class="swiper-slide prod-slide" *ngFor="let product of promoProducts">
     <ng-container>
       <mat-card class="product-card">
         <img mat-card-image [src]="product.image" alt="Photo of a product" />
-        <span class="promoPourcentage">{{ product.tauxPromo }} %</span>
+        <span class="promoPourcentage">-{{ product.tauxPromo }}%</span>
         <mat-card-content>
           {{ product.titre }}
           <div class="prices">

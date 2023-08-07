@@ -1,1 +1,26 @@
-<p>categorie works!</p>
+<swiper-container
+  class="swiper"
+  navigation="true"
+  [slidesPerView]="5"
+  loop="true"
+  autoplay-delay="5000"
+  autoplay-disable-on-interaction="false"
+  style="
+    --swiper-navigation-color: #000;
+    --swiper-navigation-size: 24px;
+    --swiper-navigation-top-offset: 50%;
+    --swiper-navigation-sides-offset: 10px;
+  "
+>
+  <div class="swiper-slide cat-swiper" *ngFor="let categorie of categories">
+    <ng-container>
+      <mat-card class="categorie-card">
+        <img
+          mat-card-image
+          src="https://fatihab1.sg-host.com/wp-content/uploads/2023/03/Group-8-300x300.png"
+          alt="Photo of a categorie"
+        />
+      </mat-card>
+    </ng-container>
+  </div>
+</swiper-container>

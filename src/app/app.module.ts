@@ -59,6 +59,7 @@ import localeFr from '@angular/common/locales/fr';
 import { ProductSwiperComponent } from './product-swiper/product-swiper.component';
 import { register } from 'swiper/element/bundle';
 import { CategorieComponent } from './categorie/categorie.component';
+import { HomeComponent } from './home/home.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -68,6 +69,7 @@ registerLocaleData(localeFr, 'fr');
     PromotionCardComponent,
     ProductSwiperComponent,
     CategorieComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

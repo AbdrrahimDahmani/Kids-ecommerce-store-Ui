@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-.swiper-slide {
+.prod-slide {
   width: 220px !important;
 
   margin-right: 15px;
@@ -20,7 +20,7 @@
   height: 18px;
 }
 
-.swiper-slide mat-card {
+.prod-slide mat-card {
   /* height: 40vh; */
   box-shadow: none;
   width: 228px;
@@ -31,13 +31,13 @@ swiper-container {
 }
 
 /* image div*/
-.swiper-slide mat-card img {
+.prod-slide mat-card img {
   height: 222px;
   width: 100%;
   object-fit: cover;
   cursor: pointer;
 }
-.swiper-slide mat-card img:hover {
+.prod-slide mat-card img:hover {
   filter: brightness(75%);
 }
 
