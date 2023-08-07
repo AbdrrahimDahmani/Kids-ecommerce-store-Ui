@@ -4,6 +4,22 @@
 
   margin-right: 15px;
 }
+.swiper-slide .product-card {
+  position: relative;
+}
+.swiper-slide .product-card .promoPourcentage {
+  position: absolute;
+  color: #fff;
+  background-color: #f33823;
+  font-size: small;
+  font-family: "Poppins", sans-serif;
+  font-size: x-small;
+  width: 38px;
+  text-align: center;
+  font-weight: bold;
+  height: 18px;
+}
+
 .swiper-slide mat-card {
   /* height: 40vh; */
   box-shadow: none;

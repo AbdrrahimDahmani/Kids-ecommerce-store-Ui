@@ -1,22 +1,3 @@
-<!-- <div class="swiper">
-  <div class="swiper-wrapper" initial-slide="0" slides-per-view="1">
-    <div class="swiper-slide" *ngFor="let slider of sliders">
-      <ng-container>
-        <mat-card class="product-card">
-          <img
-            mat-card-image
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            alt="Photo of a Shiba Inu"
-          />
-          <mat-card-content>
-            <p>The Shiba Inu is the smallest of the six</p>
-          </mat-card-content>
-        </mat-card>
-      </ng-container>
-    </div>
-  </div>
-</div> -->
-
 <swiper-container
   class="swiper"
   [slidesPerView]="4"
@@ -31,20 +12,19 @@
     --swiper-navigation-sides-offset: 10px;
   "
 >
-  <div class="swiper-slide" *ngFor="let slider of sliders">
+  <div class="swiper-slide" *ngFor="let product of promoProducts">
     <ng-container>
       <mat-card class="product-card">
-        <img
-          mat-card-image
-          src="https://fatihab1.sg-host.com/wp-content/uploads/2022/10/WhatsApp-Image-2022-08-07-at-23.37.05-2.jpeg"
-          alt="Photo of a Shiba Inu"
-        />
+        <img mat-card-image [src]="product.image" alt="Photo of a product" />
+        <span class="promoPourcentage">{{ product.tauxPromo }} %</span>
         <mat-card-content>
-          Réhausseur Chaise Haute Smarty 6m+ MARRON – Cam
+          {{ product.titre }}
           <div class="prices">
-            <span class="main-price">2,300.00 MAD</span>
+            <span class="main-price">{{ product.prix }} MAD</span>
 
-            <span class="promo-price">3,300.00 MAD</span>
+            <span class="promo-price" *ngIf="product.tauxPromo">
+              {{ product.prix - (product.prix * product.tauxPromo) / 100 }} MAD
+            </span>
           </div>
         </mat-card-content>
       </mat-card>
