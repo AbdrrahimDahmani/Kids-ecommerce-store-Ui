@@ -8,8 +8,10 @@
 }
 .text-livraison {
   font-family: "Roboto", sans-serif;
-  padding-left: 80px;
+
+  padding-left: 8vw;
 }
+
 .nav-contact .icons {
   padding-right: 80px;
 }
@@ -30,7 +32,7 @@
 /*search */
 
 .nav-search {
-  height: 14vh;
+  height: 12vh;
   background-color: #fdfdfd;
   display: flex;
   align-items: center;
@@ -95,6 +97,9 @@
   width: 28px;
   margin-left: 132px;
 }
+#targetButton img {
+  display: none;
+}
 
 /* navbar des categories*/
 .nav-categorie {
@@ -117,4 +122,74 @@
   padding-right: 5px;
   text-align: center;
   padding-bottom: 5px;
+}
+
+@media screen and (max-width: 476px) {
+  .livraison-container span .livraison-number {
+    display: none;
+  }
+  .livraison-container span:last-of-type {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .nav-contact {
+    height: 2.5rem;
+  }
+  .text-livraison {
+    font-size: smaller;
+    padding-left: 10px;
+  }
+  .icons {
+    display: none;
+  }
+  .nav-search {
+    height: auto;
+  }
+  .cart a img {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 1262px) {
+  .text-livraison {
+    padding-left: 10px;
+  }
+  .nav-contact .icons {
+    padding-right: 0px;
+  }
+  .logo img {
+    width: 65px;
+    margin-top: 8px;
+    margin-left: 0px;
+    margin-bottom: 8px;
+  }
+  #search-form .search-input input {
+    width: 52vw;
+    height: 4.5vh !important;
+    font-size: small;
+  }
+
+  #search-form .search-input mat-icon {
+    top: 7.5px;
+    right: 7px;
+  }
+  #targetButton img {
+    display: inline;
+  }
+  .phone {
+    display: none;
+  }
+  .cart img {
+    width: 25px;
+    margin-left: 15px;
+  }
+  .cart {
+    margin-right: 15px;
+  }
+
+  .nav-categorie {
+    display: none;
+  }
 }

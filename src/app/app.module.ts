@@ -60,7 +60,9 @@ import { ProductSwiperComponent } from './product-swiper/product-swiper.componen
 import { register } from 'swiper/element/bundle';
 import { CategorieComponent } from './categorie/categorie.component';
 import { HomeComponent } from './home/home.component';
-
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { OverlayMenuComponent } from './overlay-menu/overlay-menu.component';
+import { HomeProductsComponent } from './home-products/home-products.component';
 registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ registerLocaleData(localeFr, 'fr');
     ProductSwiperComponent,
     CategorieComponent,
     HomeComponent,
+    OverlayMenuComponent,
+    HomeProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -117,6 +121,7 @@ registerLocaleData(localeFr, 'fr');
     MatTableModule,
     HttpClientModule,
     FontAwesomeModule,
+    SlickCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

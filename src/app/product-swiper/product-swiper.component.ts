@@ -14,8 +14,33 @@ import { Product } from '../models/product.model';
 export class ProductSwiperComponent implements OnInit {
   products: any[] = [];
   promoProducts: any[] = [];
-  productsCategories = [];
   constructor(private productSwiperService: ProductSwiperService) {}
+
+  slideConfig = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: "<div class='nav-btn next-slide'></div>",
+    prevArrow: "<div class='nav-btn prev-slide'></div>",
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    variableWidth: true,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   ngOnInit(): void {
     // this.productSwiperService.getProductSwiper().subscribe(
     //   (success) => {

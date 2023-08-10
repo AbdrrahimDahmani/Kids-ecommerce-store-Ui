@@ -1,0 +1,58 @@
+.dialogContainer {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: large;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1949c9;
+  color: white;
+  border-bottom: solid #dddde0 1px;
+}
+.header-container .title {
+  margin: 15px;
+}
+.returnButton mat-icon {
+  padding-top: 2px;
+  margin: 15px;
+}
+.categorie-bar {
+  position: relative;
+}
+.categorie-bar div {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: medium;
+}
+.categorie-bar div img {
+  padding-right: 5px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.dialogFooter {
+  border-top: solid #dddde0 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-size: medium;
+  position: absolute;
+  bottom: 25px;
+  width: 85%;
+}
+.dialogFooter div {
+  padding-left: 5px;
+}
+.dialogFooter .phone-ico img {
+  width: 20px;
+  padding-bottom: 1px;
+}
+.dialogFooter .number {
+  font-weight: bold;
+}
+.dialogFooter .horaire {
+  font-size: smaller;
+}

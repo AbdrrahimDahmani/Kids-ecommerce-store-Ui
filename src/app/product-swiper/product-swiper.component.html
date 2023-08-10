@@ -1,4 +1,4 @@
-<swiper-container
+<!-- <swiper-container
   class="swiper"
   [slidesPerView]="4"
   navigation="true"
@@ -23,11 +23,47 @@
             <span class="main-price">{{ product.prix }} MAD</span>
 
             <span class="promo-price" *ngIf="product.tauxPromo">
-              {{ product.prix - (product.prix * product.tauxPromo) / 100 }} MAD
+              {{
+                product.prix - (product.prix * product.tauxPromo) / 100
+                  | number : "1.1-2" : "fr"
+              }}
+              MAD
             </span>
           </div>
         </mat-card-content>
       </mat-card>
     </ng-container>
   </div>
-</swiper-container>
+</swiper-container> -->
+<ngx-slick-carousel
+  class="carousel swiper-container"
+  #slickModal="slick-carousel"
+  [config]="slideConfig"
+>
+  <div
+    ngxSlickItem
+    *ngFor="let product of promoProducts"
+    class="slide prod-slide"
+  >
+    <ng-container>
+      <mat-card class="product-card">
+        <img mat-card-image [src]="product.image" alt="Photo of a product" />
+        <span class="promoPourcentage">-{{ product.tauxPromo }}%</span>
+        <mat-card-content>
+          {{ product.titre }}
+          <div class="prices">
+            <span class="main-price">{{ product.prix }} MAD</span>
+
+            <span class="promo-price" *ngIf="product.tauxPromo">
+              {{
+                product.prix - (product.prix * product.tauxPromo) / 100
+                  | number : "1.1-2" : "fr"
+              }}
+              MAD
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</ngx-slick-carousel>
