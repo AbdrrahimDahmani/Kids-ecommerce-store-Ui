@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.product-container {
+  display: flex;
+  padding-left: 2.5rem;
+}
+.images img {
+  width: 40vw;
+  height: 55vw;
+  object-fit: cover;
+}
+.product-description {
+  padding-top: 15px;
+  padding-left: 2.5rem;
+}
+.product-description .product-title {
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+
+.product-description .comment-link {
+  text-decoration: none;
+  color: black;
+}
+.product-description .comment-link:hover {
+  color: #3e56d2;
+}
+.short-description {
+  margin-top: 18px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.7px;
+  font-size: small;
+  border-bottom: solid #dddde0 1px;
+}
+
+.short-description ul {
+  padding-left: 0.8rem;
+}
+.short-description ul li {
+  padding-bottom: 11px;
+}
