@@ -6,5 +6,6 @@ export interface Marque {
   nom: string;
 
   description: string;
+  image: string;
   products: Product;
 }

@@ -1,1 +1,36 @@
-<p>home-products works!</p>
+<div class="container" *ngFor="let section of homeProducts">
+  <h1>{{ section.categorie }}</h1>
+  <div class="productContainer">
+    <div class="grid">
+      <div class="item" *ngFor="let products of section.products">
+        <ng-container>
+          <mat-card class="product-card">
+            <img
+              mat-card-image
+              [src]="products.product.image"
+              alt="Photo of a product"
+            />
+            <span class="promoPourcentage"
+              >-{{ products.product.tauxPromo }}%</span
+            >
+            <mat-card-content>
+              {{ products.product.titre }}
+              <div class="prices">
+                <span class="main-price">{{ products.product.prix }} MAD</span>
+
+                <span class="promo-price" *ngIf="products.product.tauxPromo">
+                  {{
+                    products.product.prix -
+                      (products.product.prix * products.product.tauxPromo) / 100
+                      | number : "1.1-2" : "fr"
+                  }}
+                  MAD
+                </span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.container {
+  margin-top: 25px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.marque {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.marque img {
+  object-fit: cover;
+  width: 11vw;
+}
+
+@media (max-width: 564px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .marque img {
+    width: 8rem;
+  }
+}
+@media (max-width: 480px) {
+  .marque img {
+    width: 7rem;
+  }
+}
+@media (max-width: 360px) {
+  .marque img {
+    width: 6rem;
+  }
+}

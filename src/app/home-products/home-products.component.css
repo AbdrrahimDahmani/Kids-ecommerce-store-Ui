@@ -1,0 +1,112 @@
+.container {
+  max-width: 98%;
+  margin-top: 20px;
+}
+.container h1 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card {
+  position: relative;
+}
+.product-card .promoPourcentage {
+  position: absolute;
+  color: #fff;
+  background-color: #f33823;
+  font-size: small;
+  font-family: "Poppins", sans-serif;
+  font-size: x-small;
+  width: 38px;
+  text-align: center;
+  font-weight: bold;
+  height: 18px;
+}
+
+.item mat-card {
+  box-shadow: none;
+  width: 16rem;
+}
+
+/* image div*/
+.item mat-card img {
+  height: 280px;
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+.item mat-card img:hover {
+  filter: brightness(75%);
+}
+
+/* prices  div*/
+.item mat-card mat-card-content .prices {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.item mat-card mat-card-content .prices .main-price {
+  color: #ec3c74;
+  font-family: "Poppins", sans-serif;
+
+  font-size: 15px;
+  margin-right: 8px;
+  font-weight: bold;
+}
+.item mat-card mat-card-content .prices .promo-price {
+  color: #6b8c9c;
+  font-family: "Poppins", sans-serif;
+  text-decoration: line-through;
+  font-size: 12px;
+}
+
+@media (max-width: 564px) {
+  .container {
+    max-width: 95%;
+  }
+  .grid {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  }
+  .item mat-card img {
+    height: 220px;
+  }
+  .item mat-card {
+    /* height: 40vh; */
+    width: 15rem;
+  }
+}
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  }
+  .item mat-card img {
+    height: 194px;
+  }
+  .item mat-card {
+    /* height: 40vh; */
+    width: 190px;
+  }
+}
+@media (max-width: 360px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .item mat-card img {
+    height: 154px;
+  }
+  .item mat-card {
+    /* height: 40vh; */
+    width: 151px;
+  }
+}

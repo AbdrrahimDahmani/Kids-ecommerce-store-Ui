@@ -1,0 +1,54 @@
+.section {
+  margin-top: 30px;
+  height: 80vh;
+  background-color: #e6ebed;
+  padding-top: 3rem;
+  padding-left: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10rem;
+}
+
+.social-info img {
+  width: 115px;
+  height: auto;
+  margin-left: 32px;
+  margin-bottom: 8px;
+}
+.icons {
+  margin-top: 15px;
+}
+.icons img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.item {
+  margin-bottom: 8px;
+}
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.item img {
+  width: 20px;
+  height: 18px;
+  object-fit: contain;
+}
+.item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.map a img {
+  width: 21vw;
+}

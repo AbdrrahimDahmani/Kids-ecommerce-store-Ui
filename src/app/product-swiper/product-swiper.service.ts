@@ -8,8 +8,10 @@ import { Observable } from 'rxjs';
 export class ProductSwiperService {
   baseUrl: string = 'http://localhost:3000/';
   constructor(private httpClient: HttpClient) {}
-  getPromoProduct(categorie: string): Observable<any[]> {
-    return this.httpClient.get<any[]>(this.baseUrl + 'filter/' + categorie);
+  getProductByCategorie(categorie: string, limit: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(
+      this.baseUrl + 'filter/' + categorie + '?limit=' + limit
+    );
   }
   getProductCategories(
     productId: string,

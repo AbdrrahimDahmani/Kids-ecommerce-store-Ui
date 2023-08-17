@@ -59,3 +59,20 @@
   text-decoration: line-through;
   font-size: 12px;
 }
+.prod-slide {
+  position: relative;
+}
+
+.hover-image {
+  position: absolute;
+  top: 100px;
+  right: 5px;
+  transform: translateX(-15px);
+}
+.hover-image {
+  width: 30px;
+  cursor: pointer;
+}
+img:hover .hover-image {
+  display: block;
+}

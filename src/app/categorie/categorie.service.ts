@@ -14,4 +14,9 @@ export class CategorieService {
   getCategories(): Observable<Categorie[]> {
     return this.httpcClient.get<Categorie[]>(this.baseUrl + 'categories');
   }
+  getCategoriesWithLimit(limit: number): Observable<Categorie[]> {
+    return this.httpcClient.get<Categorie[]>(
+      this.baseUrl + 'categories?limit=' + limit
+    );
+  }
 }

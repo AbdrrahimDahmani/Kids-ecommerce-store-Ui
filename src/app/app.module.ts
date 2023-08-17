@@ -63,6 +63,9 @@ import { HomeComponent } from './home/home.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { OverlayMenuComponent } from './overlay-menu/overlay-menu.component';
 import { HomeProductsComponent } from './home-products/home-products.component';
+import { MarqueSectionComponent } from './marque-section/marque-section.component';
+import { FooterComponent } from './footer/footer.component';
+import { ProductComponent } from './product/product.component';
 registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
@@ -74,6 +77,9 @@ registerLocaleData(localeFr, 'fr');
     HomeComponent,
     OverlayMenuComponent,
     HomeProductsComponent,
+    MarqueSectionComponent,
+    FooterComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

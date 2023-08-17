@@ -51,14 +51,9 @@ export class CategorieComponent implements OnInit {
     this.categorieService.getCategories().subscribe({
       next: (categories) => {
         this.categories = categories;
-        console.log(this.categories.length);
         this.categories = this.categories.filter((categorie) => {
-          return (
-            categorie.nom !== 'Uncategorized' &&
-            categorie.nom !== 'Promo du jour'
-          );
+          return categorie.image !== null;
         });
-        console.log(this.categories.length);
       },
       error: (err) => {
         console.log(err);

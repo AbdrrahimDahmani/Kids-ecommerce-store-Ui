@@ -19,7 +19,8 @@ export class ProductSwiperComponent implements OnInit {
   slideConfig = {
     slidesToShow: 4,
     slidesToScroll: 1,
-    nextArrow: "<div class='nav-btn next-slide'></div>",
+    nextArrow:
+      "<div class='nav-btn next-slide'><img src='(../../assets/images/arrow.png' alt='arrow' class='hover-image'/></div>",
     prevArrow: "<div class='nav-btn prev-slide'></div>",
     dots: false,
     infinite: true,
@@ -42,38 +43,16 @@ export class ProductSwiperComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    // this.productSwiperService.getProductSwiper().subscribe(
-    //   (success) => {
-    //     this.products = success;
-    //     this.products.map((product) => {
-    //       product.productsCategorie.map((prod) => {
-    //         this.productsCategories.push({
-    //           productId: prod.productId,
-    //           categorieId: prod.categorieId,
-    //         });
-    //       });
-    //     });
-    //     this.productsCategories.map((prodCat) => {
-    //       this.productSwiperService
-    //         .getProductCategories(prodCat.productId, prodCat.categorieId)
-    //         .subscribe((res) => {
-    //           console.log(res);
-    //         });
-    //     });
-    //   },
-    //   (errorResponse) => {
-    //     console.log(errorResponse);
-    //   }
-    // );
-    this.productSwiperService.getPromoProduct('Promo du jour').subscribe({
-      next: (success) => {
-        this.products = success;
-        this.products.map((prod) => {
-          this.promoProducts.push(prod.product);
-        });
-      },
-      error: (e) => console.log(e),
-    });
-    console.log(this.promoProducts);
+    this.productSwiperService
+      .getProductByCategorie('Promo du jour', 10)
+      .subscribe({
+        next: (success) => {
+          this.products = success;
+          this.products.map((prod) => {
+            this.promoProducts.push(prod.product);
+          });
+        },
+        error: (e) => console.log(e),
+      });
   }
 }
