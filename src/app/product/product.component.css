@@ -5,7 +5,7 @@
 }
 .images img {
   width: 40vw;
-  height: 55vw;
+  height: 53vw;
   object-fit: cover;
 }
 .product-description {
@@ -88,4 +88,20 @@
   color: black;
   background-color: white;
   border: solid 1px #0c1734;
+}
+mat-form-field {
+  margin-bottom: 7px;
+}
+.signup-form {
+  padding-bottom: 7px;
+  border-bottom: solid 1px #dddde0;
+}
+.social-media {
+  border-bottom: solid 1px #dddde0;
+}
+.social-media img {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  width: 28px;
+  margin-right: 10px;
 }

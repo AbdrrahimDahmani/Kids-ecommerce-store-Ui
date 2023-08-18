@@ -12,7 +12,7 @@ import {
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  initialValue = 0;
+  initialValue = 1;
   reactiveForm: FormGroup;
   constructor(private formBuilder: FormBuilder) {}
 
@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
     fullName: new FormControl(null, [Validators.required]),
     phone: new FormControl(null, [Validators.required]),
     adress: new FormControl(null, [Validators.required]),
-    quantity: new FormControl(0, [Validators.required, Validators.min(0)]),
+    quantity: new FormControl(1, [Validators.required, Validators.min(1)]),
   });
 
   submitRecord() {
