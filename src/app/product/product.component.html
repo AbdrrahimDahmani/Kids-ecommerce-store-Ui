@@ -1,10 +1,13 @@
+<app-navbar></app-navbar>
 <div class="product-container">
   <div class="images">
     <img src="../../assets/images/product.jpeg" alt="product" />
   </div>
   <div class="product-description">
-    <h1 class="product-title">Poussette Pour Bébé BLANC – JUMA</h1>
-    <a href="" class="comment-link">Écrire un commentaire </a>
+    <div class="title-container">
+      <h1 class="product-title">Poussette Pour Bébé BLANC – JUMA</h1>
+      <a href="" class="comment-link">Écrire un commentaire </a>
+    </div>
     <div class="short-description">
       <p>Avantages du produit en un coup d’œil</p>
       <ul>
@@ -23,6 +26,130 @@
           être utilisé comme accessoire pour la poussette
         </li>
       </ul>
+    </div>
+    <div class="price-container">
+      <div class="prices">
+        <h2>2,300.00 MAD</h2>
+        <h3>3,300.00 MAD</h3>
+      </div>
+
+      <div class="livraison">
+        <img src="../../assets/product/livraison.png" alt="livraison image" />
+      </div>
+    </div>
+
+    <div class="signup-form">
+      <form [formGroup]="inputForm" (ngSubmit)="submitRecord()">
+        <div class="name-phone">
+          <ng-container>
+            <mat-form-field appearance="outline" class="first-line-input">
+              <mat-label>Nom et Prénom</mat-label>
+              <input
+                matInput
+                placeholder="Nom et Prénom"
+                id="fullName"
+                [formControl]="inputForm.controls.fullName"
+                required
+              />
+              <mat-error *ngIf="!inputForm.hasError('required')">
+                Nom et Prénom sont <strong>requis</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="first-line-input">
+              <mat-label>Numéro de téléphone</mat-label>
+              <input
+                matInput
+                placeholder="Numéro de téléphone"
+                id="telephone"
+                [formControl]="inputForm.controls.phone"
+                required
+              />
+              <mat-error *ngIf="!inputForm.hasError('required')">
+                Numéro de téléphone est <strong>requis</strong>
+              </mat-error>
+
+              <mat-error *ngIf="!inputForm.hasError('pattern')">
+                Numéro de téléphone est <strong>incorrecte</strong>
+              </mat-error>
+            </mat-form-field>
+          </ng-container>
+        </div>
+        <div class="adresse">
+          <mat-form-field appearance="outline" class="second-line-input">
+            <mat-label>Adresse</mat-label>
+            <input
+              matInput
+              placeholder="adresse"
+              id="address"
+              [formControl]="inputForm.controls.adress"
+              required
+            />
+
+            <mat-error *ngIf="!inputForm.hasError('required')">
+              Adresse est <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="quantite">
+          <ng-container>
+            <mat-form-field appearance="outline" class="counter">
+              <input
+                matInput
+                min="0"
+                [value]="initialValue"
+                [ngxMatNumberSpinner]="[spinnerDown, spinnerUp]"
+                id="quantity"
+                [formControl]="inputForm.controls.quantity"
+                required
+              />
+
+              <button
+                type="button"
+                mat-icon-button
+                matPrefix
+                ngxMatNumberDecrementSpinner
+                #spinnerDown="ngxMatNumberDecrementSpinner"
+              >
+                -
+              </button>
+              <button
+                type="button"
+                mat-icon-button
+                matSuffix
+                ngxMatNumberIncrementSpinner
+                #spinnerUp="ngxMatNumberIncrementSpinner"
+              >
+                +
+              </button>
+              <mat-error *ngIf="!inputForm.hasError('required')">
+                Quantité est <strong>requis</strong>
+              </mat-error>
+            </mat-form-field>
+          </ng-container>
+
+          <button type="submit" class="submit-button">
+            <span>
+              <svg
+                width="28px"
+                height="28px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M19.7071 6.29289C20.0976 6.68342 20.0976 7.31658 19.7071 7.70711L10.4142 17C9.63316 17.7811 8.36683 17.781 7.58579 17L3.29289 12.7071C2.90237 12.3166 2.90237 11.6834 3.29289 11.2929C3.68342 10.9024 4.31658 10.9024 4.70711 11.2929L9 15.5858L18.2929 6.29289C18.6834 5.90237 19.3166 5.90237 19.7071 6.29289Z"
+                  fill="currentColor"
+                />
+              </svg>
+              Ajouter au panier
+            </span>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

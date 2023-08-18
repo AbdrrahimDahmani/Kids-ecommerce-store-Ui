@@ -49,7 +49,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { PromotionCardComponent } from './promotion-card/promotion-card.component';
@@ -66,6 +66,7 @@ import { HomeProductsComponent } from './home-products/home-products.component';
 import { MarqueSectionComponent } from './marque-section/marque-section.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductComponent } from './product/product.component';
+import { NgxMatNumberInputSpinnerModule } from 'ngx-mat-number-input-spinner';
 registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
@@ -128,6 +129,8 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     FontAwesomeModule,
     SlickCarouselModule,
+    NgxMatNumberInputSpinnerModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

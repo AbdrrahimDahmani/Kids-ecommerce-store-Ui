@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
 .product-container {
   display: flex;
   padding-left: 2.5rem;
+  padding-top: 2.5rem;
 }
 .images img {
   width: 40vw;
@@ -12,10 +11,12 @@
 .product-description {
   padding-top: 15px;
   padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 .product-description .product-title {
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 30px;
   margin-bottom: 18px;
 }
 
@@ -28,15 +29,63 @@
 }
 .short-description {
   margin-top: 18px;
-  font-family: "Poppins", sans-serif;
-  letter-spacing: 0.7px;
-  font-size: small;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
   border-bottom: solid #dddde0 1px;
+}
+.short-description p {
+  margin-bottom: 18px;
 }
 
 .short-description ul {
-  padding-left: 0.8rem;
+  padding-left: 0.7rem;
 }
 .short-description ul li {
   padding-bottom: 11px;
+}
+.price-container {
+  margin-bottom: 1.2rem;
+}
+.price-container .prices {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 5px;
+}
+.prices h2 {
+  font-size: 30px;
+  padding-right: 15px;
+  font-weight: 600;
+}
+.prices h3 {
+  font-size: 20px;
+  text-decoration: line-through;
+  color: #95a5ad;
+}
+.first-line-input {
+  width: 380px;
+  margin-right: 18px;
+}
+.second-line-input {
+  width: 778px;
+}
+.counter {
+  width: 116px;
+}
+.submit-button {
+  width: 350px;
+  color: white;
+  background-color: #0c1734;
+  border: none;
+  height: 55px;
+  border-radius: 6px;
+  margin-left: 15px;
+  transition: 0.5s;
+  text-align: center;
+}
+.submit-button:hover {
+  color: black;
+  background-color: white;
+  border: solid 1px #0c1734;
 }
