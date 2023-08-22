@@ -67,6 +67,7 @@ import { MarqueSectionComponent } from './marque-section/marque-section.componen
 import { FooterComponent } from './footer/footer.component';
 import { ProductComponent } from './product/product.component';
 import { NgxMatNumberInputSpinnerModule } from 'ngx-mat-number-input-spinner';
+import { DescriptionProductComponent } from './description-product/description-product.component';
 registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ registerLocaleData(localeFr, 'fr');
     MarqueSectionComponent,
     FooterComponent,
     ProductComponent,
+    DescriptionProductComponent,
   ],
   imports: [
     BrowserModule,

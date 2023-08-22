@@ -1,0 +1,34 @@
+.section {
+  margin-top: 3rem;
+}
+.description {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #1949c9;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.long-description {
+  padding: 2.5rem;
+  background-color: #f4f4f4;
+}
+.long-description .product-title {
+  padding-top: 2vw;
+  font-size: 2.5vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+.long-description .short-title {
+  padding-top: 0.5vw 0;
+  font-size: 1.8vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+.long-description p {
+  padding-top: 0.5vw 0;
+
+  font-family: "Roboto", sans-serif;
+  font-size: small;
+  letter-spacing: 0.5px;
+}

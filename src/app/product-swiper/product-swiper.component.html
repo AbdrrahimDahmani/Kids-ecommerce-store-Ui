@@ -10,10 +10,14 @@
   >
     <ng-container>
       <mat-card class="product-card">
-        <img mat-card-image [src]="product.image" alt="Photo of a product" />
+        <a routerLink="product/{{ product.id }}">
+          <img mat-card-image [src]="product.image" alt="Photo of a product" />
+        </a>
         <span class="promoPourcentage">-{{ product.tauxPromo }}%</span>
         <mat-card-content>
-          {{ product.titre }}
+          <a routerLink="product/{{ product.id }}">
+            <span>{{ product.titre }}</span>
+          </a>
           <div class="prices">
             <span class="main-price">{{ product.prix }} MAD</span>
 

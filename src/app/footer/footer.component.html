@@ -1,63 +1,77 @@
 <div class="section">
-  <div class="social-info">
-    <img src="../../assets/navbar/logo-casakids.png" alt="logo" />
-    <div class="icons" style="margin-right: 8vw">
-      <img src="../../assets/footer/facebook-ico.svg" alt="facebook ico" />
-      <img src="../../assets/footer/tiktok-ico.svg" alt="tiktok ico" />
-      <img src="../../assets/footer/instagram-ico.svg" alt="instagram ico" />
-      <img src="../../assets/footer/youtube-ico.svg" alt="youtube ico" />
+  <div class="social-container">
+    <div class="social-info">
+      <img src="../../assets/navbar/logo-casakids.png" alt="logo" />
+      <div class="icons" style="margin-right: 8vw">
+        <img src="../../assets/footer/facebook-ico.svg" alt="facebook ico" />
+        <img src="../../assets/footer/tiktok-ico.svg" alt="tiktok ico" />
+        <img src="../../assets/footer/instagram-ico.svg" alt="instagram ico" />
+        <img src="../../assets/footer/youtube-ico.svg" alt="youtube ico" />
+      </div>
     </div>
-  </div>
-  <div class="contact-info">
-    <div class="title">Nous joindre</div>
-    <div class="item-container">
-      <div class="item">
-        <a href="tel:+212522222221"
-          ><img src="../../assets/navbar/telephone.png" alt="phone" />
-          <div>+2125 22 22 22 21</div>
-        </a>
+    <div class="contact-info">
+      <div class="title">Nous joindre</div>
+      <div class="item-container">
+        <div class="item">
+          <a href="tel:+212522222221"
+            ><img src="../../assets/navbar/telephone.png" alt="phone" />
+            <div>+2125 22 22 22 21</div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="mailto:contact@casakids.ma">
+            <img src="../../assets/navbar/telephone.png" alt="phone" />
+            <div>contact@casakids.ma</div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="https://goo.gl/maps/LDzhqoTGMRp96YPQ8">
+            <img src="../../assets/navbar/telephone.png" alt="phone" />
+            <div>
+              63 Rue rguibates en face a la foire international,<br />
+              mosquée hassan 2, Casablanca, Maroc
+            </div>
+          </a>
+        </div>
+        <div class="map">
+          <a href="https://goo.gl/maps/LDzhqoTGMRp96YPQ8">
+            <img src="../../assets/footer/adresse.png" alt="footer" />
+          </a>
+        </div>
       </div>
-      <div class="item">
-        <a href="mailto:contact@casakids.ma">
-          <img src="../../assets/navbar/telephone.png" alt="phone" />
-          <div>contact@casakids.ma</div>
-        </a>
+    </div>
+
+    <div class="contact-info">
+      <div class="title">Nous joindre</div>
+      <div class="item-container">
+        <div class="item" *ngFor="let item of categories">
+          <a [routerLink]="['/categorie/' + item.nom]">
+            <div>{{ item.nom }}</div>
+          </a>
+        </div>
       </div>
-      <div class="item">
-        <a href="https://goo.gl/maps/LDzhqoTGMRp96YPQ8">
-          <img src="../../assets/navbar/telephone.png" alt="phone" />
-          <div>
-            63 Rue rguibates en face a la foire international,<br />
-            mosquée hassan 2, Casablanca, Maroc
-          </div>
-        </a>
-      </div>
-      <div class="map">
-        <a href="https://goo.gl/maps/LDzhqoTGMRp96YPQ8">
-          <img src="../../assets/footer/adresse.png" alt="footer" />
-        </a>
+    </div>
+    <div class="contact-info">
+      <div class="title">Informations</div>
+      <div class="item-container">
+        <div class="item" *ngFor="let item of informations">
+          <a [routerLink]="['/' + item.link]">
+            <div>{{ item.nom }}</div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="contact-info">
-    <div class="title">Nous joindre</div>
-    <div class="item-container">
-      <div class="item" *ngFor="let item of categories">
-        <a [routerLink]="['/categorie/' + item.nom]">
-          <div>{{ item.nom }}</div>
-        </a>
-      </div>
+  <div class="copyright">
+    <div class="copyright-text">
+      <span>Copyright © 2018-2023 CasaKids. Tous droits réservés</span>
     </div>
-  </div>
-  <div class="contact-info">
-    <div class="title">Informations</div>
-    <div class="item-container">
-      <div class="item" *ngFor="let item of informations">
-        <a [routerLink]="['/' + item.link]">
-          <div>{{ item.nom }}</div>
-        </a>
-      </div>
+    <div class="payment-icons">
+      <img
+        src="../../assets/footer/badge-footer-e1690495279939.png"
+        alt="payment methods"
+      />
     </div>
   </div>
 </div>

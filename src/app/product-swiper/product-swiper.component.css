@@ -76,3 +76,10 @@
 img:hover .hover-image {
   display: block;
 }
+mat-card-content a {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  text-transform: capitalize;
+  color: black;
+  padding-top: 5px;
+}
