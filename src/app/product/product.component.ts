@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-product',
@@ -12,8 +13,25 @@ import {
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  @ViewChild('slickComponent') slickModal: SlickCarouselComponent;
+  images: string[] = [
+    '../../assets/images/product.jpeg',
+    '../../assets/images/product.jpeg',
+    '../../assets/images/product.jpeg',
+  ];
+
+  currentSlideIndex = 0;
+
+  slickCarouselConfig = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
   initialValue = 1;
   reactiveForm: FormGroup;
+
   constructor(private formBuilder: FormBuilder) {}
 
   inputForm = new FormGroup({
@@ -31,4 +49,9 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  showImage(index: number): void {
+    console.log(index);
+    this.slickModal.slickGoTo(index); // Go to the selected slide
+  }
 }

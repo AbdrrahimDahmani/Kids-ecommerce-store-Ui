@@ -1,8 +1,73 @@
 <app-navbar></app-navbar>
 <div class="product-container">
-  <div class="images">
-    <img src="../../assets/images/product.jpeg" alt="product" />
+  <!-- <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+  >
+    <div class="slider-for">
+      <div ngxSlickItem class="images">
+        <img src="../../assets/images/product.jpeg" alt="product" />
+      </div>
+       <div ngxSlickItem class="images">
+        <img src="../../assets/images/product.jpeg" alt="product" />
+      </div>
+      <div ngxSlickItem class="images">
+        <img src="../../assets/images/product.jpeg" alt="product" />
+      </div>
+    </div>
+  </ngx-slick-carousel> -->
+  <!-- <div class="slider-container">
+    <ngx-slick-carousel
+      class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slickConfig"
+      (init)="carouselInit()"
+    >
+      <div ngxSlickItem *ngFor="let image of images" class="slide">
+        <img [src]="image" alt="Product Image" />
+      </div>
+    </ngx-slick-carousel>
+
+    <div class="thumbnail-images">
+      <div
+        *ngFor="let image of images; let i = index"
+        class="thumbnail"
+        (click)="showImage(i)"
+      >
+        <img [src]="image" alt="Thumbnail Image" class="thumbnail-img" />
+      </div>
+    </div>
+  </div> -->
+
+  <div class="slider-container">
+    <ngx-slick-carousel
+      #slickComponent="slick-carousel"
+      class="carousel"
+      [config]="slickCarouselConfig"
+    >
+      <div
+        ngxSlickItem
+        *ngFor="let image of images; let i = index"
+        class="images"
+      >
+        <ng-container>
+          <img [src]="image" alt="" />
+        </ng-container>
+      </div>
+    </ngx-slick-carousel>
+
+    <div class="thumbnail-images">
+      <div
+        *ngFor="let image of images; let i = index"
+        class="thumbnail"
+        (click)="showImage(i)"
+      >
+        <a><img [src]="image" alt="Thumbnail Image" /></a>
+      </div>
+    </div>
   </div>
+
   <div class="product-description">
     <div class="title-container">
       <h1 class="product-title">Poussette Pour Bébé BLANC – JUMA</h1>
