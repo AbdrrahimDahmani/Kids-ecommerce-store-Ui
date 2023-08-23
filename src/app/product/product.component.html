@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="product-section">
+<div class="product-section" *ngFor="let item of product">
   <div class="product-container">
     <div class="slider-container">
       <ngx-slick-carousel
@@ -7,6 +7,11 @@
         class="carousel"
         [config]="slickCarouselConfig"
       >
+        <div ngxSlickItem class="images">
+          <ng-container>
+            <img [src]="item.image" alt="product" />
+          </ng-container>
+        </div>
         <div
           ngxSlickItem
           *ngFor="let image of images; let i = index"
@@ -31,7 +36,7 @@
 
     <div class="product-description">
       <div class="title-container">
-        <h1 class="product-title">Poussette Pour Bébé BLANC – JUMA</h1>
+        <h1 class="product-title">{{ item.titre }}</h1>
         <a href="" class="comment-link">Écrire un commentaire </a>
       </div>
       <div class="short-description">

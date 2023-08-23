@@ -6,6 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import { ProductService } from './product.service';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../models/product.model';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -19,9 +23,7 @@ export class ProductComponent implements OnInit {
     '../../assets/images/product.jpeg',
     '../../assets/images/product.jpeg',
   ];
-
   currentSlideIndex = 0;
-
   slickCarouselConfig = {
     infinite: true,
     slidesToShow: 1,
@@ -29,10 +31,18 @@ export class ProductComponent implements OnInit {
     arrows: false,
   };
 
+  id: string;
+
   initialValue = 1;
   reactiveForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  product: any;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) {}
 
   inputForm = new FormGroup({
     fullName: new FormControl(null, [Validators.required]),
@@ -48,10 +58,19 @@ export class ProductComponent implements OnInit {
     console.log(this.inputForm.value);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.productService.getProductById(this.id).subscribe({
+      next: (res) => {
+        this.product = res;
+        this.product = Array.of(this.product);
+      },
+      error: (err) => console.log(err),
+    });
+  }
 
   showImage(index: number): void {
     console.log(index);
-    this.slickModal.slickGoTo(index); // Go to the selected slide
+    this.slickModal.slickGoTo(index);
   }
 }
