@@ -21,7 +21,6 @@ export class ProductComponent implements OnInit {
   images: string[] = [
     '../../assets/images/product.jpeg',
     '../../assets/images/product.jpeg',
-    '../../assets/images/product.jpeg',
   ];
   currentSlideIndex = 0;
   slickCarouselConfig = {
@@ -64,6 +63,7 @@ export class ProductComponent implements OnInit {
       next: (res) => {
         this.product = res;
         this.product = Array.of(this.product);
+        console.log(this.product);
       },
       error: (err) => console.log(err),
     });

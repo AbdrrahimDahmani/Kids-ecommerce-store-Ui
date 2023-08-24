@@ -24,10 +24,13 @@
       </ngx-slick-carousel>
 
       <div class="thumbnail-images">
+        <div class="thumbnail" (click)="showImage(0)">
+          <a><img [src]="item.image" alt="Thumbnail Image" /></a>
+        </div>
         <div
           *ngFor="let image of images; let i = index"
           class="thumbnail"
-          (click)="showImage(i)"
+          (click)="showImage(i + 1)"
         >
           <a><img [src]="image" alt="Thumbnail Image" /></a>
         </div>
@@ -62,8 +65,14 @@
       </div>
       <div class="price-container">
         <div class="prices">
-          <h2>2,300.00 MAD</h2>
-          <h3>3,300.00 MAD</h3>
+          <h2>{{ item.prix | number : "1.2-2" : "fr" }} MAD</h2>
+          <h3 *ngIf="item.tauxPromo">
+            {{
+              item.prix - (item.prix * item.tauxPromo) / 100
+                | number : "1.1-2" : "fr"
+            }}
+            MAD
+          </h3>
         </div>
 
         <div class="livraison">
