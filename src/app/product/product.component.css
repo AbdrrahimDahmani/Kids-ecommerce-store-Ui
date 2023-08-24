@@ -120,6 +120,9 @@ mat-form-field {
 .slide img {
   max-width: 100%;
 }
+.slide img:hover {
+  transform: scale(1.5);
+}
 
 .thumbnail-images {
   display: flex;

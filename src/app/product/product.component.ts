@@ -10,6 +10,7 @@ import { ProductService } from './product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.model';
 import { JsonPipe } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +19,7 @@ import { JsonPipe } from '@angular/common';
 })
 export class ProductComponent implements OnInit {
   @ViewChild('slickComponent') slickModal: SlickCarouselComponent;
+
   images: string[] = [
     '../../assets/images/product.jpeg',
     '../../assets/images/product.jpeg',
@@ -40,21 +42,43 @@ export class ProductComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cookie: CookieService
   ) {}
 
   inputForm = new FormGroup({
-    fullName: new FormControl(null, [Validators.required]),
-    phone: new FormControl(null, [Validators.required]),
-    adress: new FormControl(null, [Validators.required]),
-    quantity: new FormControl(1, [Validators.required, Validators.min(1)]),
+    fullName: new FormControl(
+      this.cookie.get('nom')
+        ? this.cookie.get('nom') + ' ' + this.cookie.get('prenom')
+        : null,
+      [Validators.required]
+    ),
+    phone: new FormControl(
+      this.cookie.get('telephone') ? this.cookie.get('telephone') : null,
+      [Validators.required]
+    ),
+    adress: new FormControl(
+      this.cookie.get('adresse') ? this.cookie.get('adresse') : null,
+      [Validators.required]
+    ),
+    quantity: new FormControl(
+      this.cookie.get('quantite') ? this.cookie.get('quantite') : 1,
+      [Validators.required, Validators.min(1)]
+    ),
   });
 
   submitRecord() {
     this.inputForm.controls.phone.addValidators(
       Validators.pattern('[6-9]\\d{9}')
     );
-    console.log(this.inputForm.value);
+    let separatedName = this.inputForm.value.fullName.split(' ');
+    let quantite = this.inputForm.value.quantity.toString();
+    this.cookie.set('nom', separatedName[0]);
+    this.cookie.set('prenom', separatedName[1]);
+    this.cookie.set('telephone', this.inputForm.value.phone);
+    this.cookie.set('adresse', this.inputForm.value.adress);
+    this.cookie.set('quantite', quantite);
+    console.log(this.cookie.getAll());
   }
 
   ngOnInit(): void {

@@ -68,6 +68,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductComponent } from './product/product.component';
 import { NgxMatNumberInputSpinnerModule } from 'ngx-mat-number-input-spinner';
 import { DescriptionProductComponent } from './description-product/description-product.component';
+import { CookieService } from 'ngx-cookie-service';
 registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
@@ -134,7 +135,7 @@ registerLocaleData(localeFr, 'fr');
     NgxMatNumberInputSpinnerModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

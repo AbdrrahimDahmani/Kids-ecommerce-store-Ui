@@ -18,7 +18,9 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row class="nav-search">
-    <span class="logo"><img src="./assets/navbar/logo-casakids.png" /></span>
+    <a routerLink="/">
+      <span class="logo"><img src="./assets/navbar/logo-casakids.png" /></span>
+    </a>
     <form class="search" id="search-form">
       <div class="search-input">
         <input
@@ -51,13 +53,14 @@
 
   <mat-toolbar-row class="nav-categorie">
     <div class="categorie-bar">
-      <div>
-        <img
-          src="https://img.icons8.com/material-rounded/20/null/home-page.png"
-        />
-        <span>ACCUEIL</span>
-      </div>
-
+      <a routerLink="/">
+        <div>
+          <img
+            src="https://img.icons8.com/material-rounded/20/null/home-page.png"
+          />
+          <span>ACCUEIL</span>
+        </div>
+      </a>
       <div>
         <img
           src="https://img.icons8.com/ios-glyphs/20/null/men-age-group-1.png"

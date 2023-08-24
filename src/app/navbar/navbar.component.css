@@ -38,6 +38,10 @@
   align-items: center;
   border-bottom: solid #dddde0 1px;
 }
+.categorie-bar a {
+  color: black;
+  text-decoration: none;
+}
 .logo img {
   width: 100px;
   margin-top: 15px;

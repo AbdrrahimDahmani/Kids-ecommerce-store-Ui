@@ -26,6 +26,7 @@
     "bootstrap": "^5.3.1",
     "jquery": "^3.7.0",
     "moment": "^2.29.4",
+    "ngx-cookie-service": "^16.0.1",
     "ngx-mat-number-input-spinner": "^1.2.0",
     "ngx-slick-carousel": "^15.0.0",
     "rxjs": "~7.8.0",
