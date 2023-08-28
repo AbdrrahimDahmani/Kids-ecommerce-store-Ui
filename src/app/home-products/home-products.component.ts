@@ -14,11 +14,11 @@ export class HomeProductsComponent implements OnInit {
 
   constructor(private productSwiperService: ProductSwiperService) {
     this.categories = [
-      'Top des ventes',
-      'Biberons',
-      'Balancelles',
-      'Porte bébé',
-      'Poussettes',
+      'top-des-ventes',
+      'biberons',
+      'balancelles',
+      'porte-bebe',
+      'poussettes',
     ];
   }
 

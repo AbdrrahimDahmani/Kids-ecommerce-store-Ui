@@ -14,11 +14,11 @@
         </div>
         <div
           ngxSlickItem
-          *ngFor="let image of images; let i = index"
+          *ngFor="let galerie of galeries; let i = index"
           class="images"
         >
           <ng-container>
-            <img [src]="image" alt="" />
+            <img [src]="galerie.image" alt="image" />
           </ng-container>
         </div>
       </ngx-slick-carousel>
@@ -28,11 +28,11 @@
           <a><img [src]="item.image" alt="Thumbnail Image" /></a>
         </div>
         <div
-          *ngFor="let image of images; let i = index"
+          *ngFor="let galerie of galeries; let i = index"
           class="thumbnail"
           (click)="showImage(i + 1)"
         >
-          <a><img [src]="image" alt="Thumbnail Image" /></a>
+          <a><img [src]="galerie.image" alt="Thumbnail Image" /></a>
         </div>
       </div>
     </div>

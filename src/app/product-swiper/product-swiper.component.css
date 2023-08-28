@@ -66,15 +66,20 @@
 .hover-image {
   position: absolute;
   top: 100px;
-  right: 5px;
+  z-index: 1;
   transform: translateX(-15px);
+}
+.next-img {
+  right: 5px;
 }
 .hover-image {
   width: 30px;
   cursor: pointer;
 }
-img:hover .hover-image {
-  display: block;
+
+.prev-img {
+  left: 5px;
+  transform: rotate(180deg);
 }
 mat-card-content a {
   text-decoration: none;

@@ -1,1 +1,52 @@
-<p>categorie-page works!</p>
+<app-navbar></app-navbar>
+<div class="section">
+  <div class="container">
+    <div class="categorie-header">
+      <h1>
+        {{ categorie }}
+        <mat-chip class="product-length">{{ products?.length }}</mat-chip>
+      </h1>
+    </div>
+    <div class="error-message" *ngIf="products?.length == 0">
+      <mat-card>
+        <mat-card-content>
+          Aucun produit ne correspond à votre sélection
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="grid" *ngIf="products?.length > 0">
+      <div class="item" *ngFor="let product of products">
+        <ng-container>
+          <mat-card class="product-card">
+            <a routerLink="/product/{{ product.id }}">
+              <img
+                mat-card-image
+                [src]="product.image"
+                alt="Photo of a product"
+              />
+            </a>
+
+            <span class="promoPourcentage">-{{ product.tauxPromo }}%</span>
+            <mat-card-content>
+              <a routerLink="/product/{{ product.id }}">
+                <span>{{ product.titre }}</span></a
+              >
+              <div class="prices">
+                <span class="main-price">{{ product.prix }} MAD</span>
+
+                <span class="promo-price" *ngIf="product.tauxPromo">
+                  {{
+                    product.prix - (product.prix * product.tauxPromo) / 100
+                      | number : "1.1-2" : "fr"
+                  }}
+                  MAD
+                </span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

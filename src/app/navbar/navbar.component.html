@@ -53,55 +53,14 @@
 
   <mat-toolbar-row class="nav-categorie">
     <div class="categorie-bar">
-      <a routerLink="/">
-        <div>
-          <img
-            src="https://img.icons8.com/material-rounded/20/null/home-page.png"
-          />
-          <span>ACCUEIL</span>
-        </div>
-      </a>
-      <div>
-        <img
-          src="https://img.icons8.com/ios-glyphs/20/null/men-age-group-1.png"
-        />
-        <span>POUSSETTES</span>
-      </div>
-
-      <div>
-        <img
-          src="https://img.icons8.com/ios-filled/20/null/baby-car-seat.png"
-        />
-        <span>SIÉGE AUTO </span>
-      </div>
-
-      <div>
-        <img
-          src="https://img.icons8.com/sf-black-filled/20/null/baby-bottle.png"
-        />
-        <span>ALIMENTATION</span>
-      </div>
-
-      <div>
-        <img src="https://img.icons8.com/ios-filled/20/null/baby-mobile.png" />
-        <span>Sommeil</span>
-      </div>
-      <div>
-        <img
-          src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/20/null/external-diaper-baby-vitaliy-gorbachev-fill-vitaly-gorbachev.png"
-        />
-        <span>Hygiène</span>
-      </div>
-      <div>
-        <img
-          src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/20/null/external-Pregnant-mother's-day-smashingstocks-glyph-smashing-stocks.png"
-        />
-        <span>Maternité</span>
-      </div>
-      <div>
-        <img src="https://img.icons8.com/ios-filled/20/null/gift--v1.png" />
-        <span>Liste de naissance</span>
-      </div>
+      <ng-container *ngFor="let navCategorie of navCategories">
+        <a [routerLink]="[navCategorie.routerLink]">
+          <div>
+            <img [src]="navCategorie.img" />
+            <span>{{ navCategorie.name }}</span>
+          </div>
+        </a>
+      </ng-container>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

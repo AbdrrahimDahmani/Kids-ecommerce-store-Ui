@@ -5,7 +5,7 @@
       <div class="item" *ngFor="let products of section.products">
         <ng-container>
           <mat-card class="product-card">
-            <a routerLink="product/{{ products.product.id }}">
+            <a routerLink="/product/{{ products.product.id }}">
               <img
                 mat-card-image
                 [src]="products.product.image"
@@ -17,7 +17,7 @@
               >-{{ products.product.tauxPromo }}%</span
             >
             <mat-card-content>
-              <a routerLink="product/{{ products.product.id }}">
+              <a routerLink="/product/{{ products.product.id }}">
                 <span>{{ products.product.titre }}</span></a
               >
               <div class="prices">

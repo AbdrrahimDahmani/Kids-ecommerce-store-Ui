@@ -78,3 +78,31 @@ a {
   font-family: "Poppins", sans-serif;
   font-size: small;
 }
+@media (max-width: 765px) {
+  .section .social-container {
+    flex-direction: column;
+  }
+}
+/*
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  }
+  .item mat-card img {
+    height: 194px;
+  }
+  .item mat-card {
+    width: 190px;
+  }
+}
+@media (max-width: 360px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .item mat-card img {
+    height: 154px;
+  }
+  .item mat-card {
+    width: 151px;
+  }
+} */

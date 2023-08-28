@@ -20,8 +20,9 @@ export class ProductSwiperComponent implements OnInit {
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow:
-      "<div class='nav-btn next-slide'><img src='(../../assets/images/arrow.png' alt='arrow' class='hover-image'/></div>",
-    prevArrow: "<div class='nav-btn prev-slide'></div>",
+      "<div class='nav-btn next-slide'><img src='(../../assets/images/arrow.png' alt='arrow' class='hover-image next-img'/></div>",
+    prevArrow:
+      "<div class='nav-btn prev-slide'><img src='(../../assets/images/arrow.png' alt='arrow' class='hover-image prev-img'/></div>",
     dots: false,
     infinite: true,
     autoplay: true,
@@ -44,7 +45,7 @@ export class ProductSwiperComponent implements OnInit {
 
   ngOnInit(): void {
     this.productSwiperService
-      .getProductByCategorie('Promo du jour', 10)
+      .getProductByCategorie('promo-du-jour', 10)
       .subscribe({
         next: (success) => {
           this.products = success;

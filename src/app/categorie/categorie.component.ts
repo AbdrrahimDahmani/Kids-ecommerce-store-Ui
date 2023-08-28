@@ -46,7 +46,9 @@ export class CategorieComponent implements OnInit {
       },
     ],
   };
-
+  replaceSpace(word: string) {
+    return word.replace(/ /g, '-');
+  }
   ngOnInit(): void {
     this.categorieService.getCategories().subscribe({
       next: (categories) => {

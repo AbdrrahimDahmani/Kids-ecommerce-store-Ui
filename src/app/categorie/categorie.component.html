@@ -1,25 +1,3 @@
-<!-- <swiper-container
-  class="swiper"
-  navigation="true"
-  [slidesPerView]="5"
-  loop="true"
-  autoplay-delay="5000"
-  autoplay-disable-on-interaction="false"
-  style="
-    --swiper-navigation-color: #000;
-    --swiper-navigation-size: 24px;
-    --swiper-navigation-top-offset: 50%;
-    --swiper-navigation-sides-offset: 10px;
-  "
->
-  <div class="swiper-slide cat-swiper" *ngFor="let categorie of categories">
-    <ng-container>
-      <mat-card class="categorie-card">
-        <img mat-card-image [src]="categorie.image" [alt]="categorie.nom" />
-      </mat-card>
-    </ng-container>
-  </div>
-</swiper-container> -->
 <ngx-slick-carousel
   class="carousel"
   #slickModal="slick-carousel"
@@ -31,10 +9,12 @@
     *ngFor="let categorie of categories"
     class="slide"
   >
-    <ng-container>
-      <mat-card class="categorie-card">
-        <img mat-card-image [src]="categorie.image" [alt]="categorie.nom" />
-      </mat-card>
-    </ng-container>
+    <a routerLink="categorie/{{ categorie.routerLink }}">
+      <ng-container>
+        <mat-card class="categorie-card">
+          <img mat-card-image [src]="categorie.image" [alt]="categorie.nom" />
+        </mat-card>
+      </ng-container>
+    </a>
   </div>
 </ngx-slick-carousel>

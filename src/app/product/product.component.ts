@@ -20,10 +20,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class ProductComponent implements OnInit {
   @ViewChild('slickComponent') slickModal: SlickCarouselComponent;
 
-  images: string[] = [
-    '../../assets/images/product.jpeg',
-    '../../assets/images/product.jpeg',
-  ];
   currentSlideIndex = 0;
   slickCarouselConfig = {
     infinite: true,
@@ -38,7 +34,7 @@ export class ProductComponent implements OnInit {
   reactiveForm: FormGroup;
 
   product: any;
-
+  galeries: any[] = [];
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
@@ -78,6 +74,7 @@ export class ProductComponent implements OnInit {
     this.cookie.set('telephone', this.inputForm.value.phone);
     this.cookie.set('adresse', this.inputForm.value.adress);
     this.cookie.set('quantite', quantite);
+    this.cookie.set('produit', this.id);
     console.log(this.cookie.getAll());
   }
 
@@ -88,6 +85,12 @@ export class ProductComponent implements OnInit {
         this.product = res;
         this.product = Array.of(this.product);
         console.log(this.product);
+      },
+      error: (err) => console.log(err),
+    });
+    this.productService.getProductGalerieById(this.id).subscribe({
+      next: (res) => {
+        this.galeries = res;
       },
       error: (err) => console.log(err),
     });
