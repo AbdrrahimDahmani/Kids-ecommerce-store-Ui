@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductSwiperService {
-  baseUrl: string = 'http://localhost:3000/';
+  baseUrl: string = environment.apiUrl;
   constructor(private httpClient: HttpClient) {}
   getProductByCategorie(categorie: string, limit: number): Observable<any[]> {
     return this.httpClient.get<any[]>(

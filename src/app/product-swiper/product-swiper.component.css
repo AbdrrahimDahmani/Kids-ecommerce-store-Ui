@@ -50,7 +50,7 @@
   font-family: "Poppins", sans-serif;
 
   font-size: 15px;
-  margin-right: 8px;
+  margin-right: 5px;
   font-weight: bold;
 }
 .prod-slide mat-card mat-card-content .prices .promo-price {
@@ -68,13 +68,15 @@
   top: 100px;
   z-index: 1;
   transform: translateX(-15px);
+  width: 30px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.hover-image:hover {
+  opacity: 1;
 }
 .next-img {
   right: 5px;
-}
-.hover-image {
-  width: 30px;
-  cursor: pointer;
 }
 
 .prev-img {
@@ -86,5 +88,17 @@ mat-card-content a {
   font-family: "Poppins", sans-serif;
   text-transform: capitalize;
   color: black;
-  padding-top: 5px;
+  font-size: small;
+}
+
+.prod-slide mat-card .vue-rapide {
+  position: absolute;
+  background-color: white;
+  right: 15px;
+  top: 10px;
+  border: 1px solid #d8e4e8;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  padding: 5px;
 }

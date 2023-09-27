@@ -70,6 +70,7 @@ import { NgxMatNumberInputSpinnerModule } from 'ngx-mat-number-input-spinner';
 import { DescriptionProductComponent } from './description-product/description-product.component';
 import { CookieService } from 'ngx-cookie-service';
 import { CategoriePageComponent } from './categorie-page/categorie-page.component';
+import { PanierComponent } from './panier/panier.component';
 registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ registerLocaleData(localeFr, 'fr');
     ProductComponent,
     DescriptionProductComponent,
     CategoriePageComponent,
+    PanierComponent,
   ],
   imports: [
     BrowserModule,

@@ -56,3 +56,7 @@
 .dialogFooter .horaire {
   font-size: smaller;
 }
+.categorie-bar a {
+  color: black;
+  text-decoration: none;
+}

@@ -40,6 +40,7 @@ export class HomeProductsComponent implements OnInit {
             this.categories.indexOf(b.categorie)
           );
         });
+        console.log(this.homeProducts);
       },
       error: (e) => console.log(e),
     });

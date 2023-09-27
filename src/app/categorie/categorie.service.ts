@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categorie } from '../models/categorie.model';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategorieService {
-  baseUrl: string = 'http://localhost:3000/';
+  baseUrl: string = environment.apiUrl;
 
   constructor(private httpcClient: HttpClient) {}
 

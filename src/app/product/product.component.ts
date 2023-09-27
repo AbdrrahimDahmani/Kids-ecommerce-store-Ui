@@ -19,7 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ProductComponent implements OnInit {
   @ViewChild('slickComponent') slickModal: SlickCarouselComponent;
-
+  paniers: any[] = [];
   currentSlideIndex = 0;
   slickCarouselConfig = {
     infinite: true,
@@ -57,24 +57,26 @@ export class ProductComponent implements OnInit {
       this.cookie.get('adresse') ? this.cookie.get('adresse') : null,
       [Validators.required]
     ),
-    quantity: new FormControl(
-      this.cookie.get('quantite') ? this.cookie.get('quantite') : 1,
-      [Validators.required, Validators.min(1)]
-    ),
+    quantity: new FormControl(1, [Validators.required, Validators.min(1)]),
   });
 
   submitRecord() {
     this.inputForm.controls.phone.addValidators(
       Validators.pattern('[6-9]\\d{9}')
     );
+    console.log(this.inputForm.controls.phone.errors);
     let separatedName = this.inputForm.value.fullName.split(' ');
-    let quantite = this.inputForm.value.quantity.toString();
+    let quantite = this.inputForm.value.quantity;
+    this.paniers.push({
+      product: this.id,
+      quantite: quantite,
+    });
+
     this.cookie.set('nom', separatedName[0]);
     this.cookie.set('prenom', separatedName[1]);
     this.cookie.set('telephone', this.inputForm.value.phone);
     this.cookie.set('adresse', this.inputForm.value.adress);
-    this.cookie.set('quantite', quantite);
-    this.cookie.set('produit', this.id);
+    this.cookie.set('panier', JSON.stringify(this.paniers));
     console.log(this.cookie.getAll());
   }
 

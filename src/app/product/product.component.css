@@ -126,7 +126,6 @@ mat-form-field {
 
 .thumbnail-images {
   display: flex;
-  justify-content: start;
 }
 
 .thumbnail {
@@ -138,7 +137,6 @@ mat-form-field {
   object-fit: cover;
   width: 80px;
   height: 80px;
-  margin: 0 1px;
   border: 2px solid #ccc;
 }
 

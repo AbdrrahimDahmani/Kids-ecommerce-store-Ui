@@ -44,7 +44,8 @@
       </div>
       <div class="short-description">
         <p>Avantages du produit en un coup d’œil</p>
-        <ul>
+        <p>{{ item.description }}</p>
+        <!-- <ul>
           <li>
             Transformez le berceau en un accessoire de buggy en quelques étapes
             simples
@@ -61,18 +62,24 @@
             Un siège d’auto est inclus dans le cadre de la livraison, qui peut
             être utilisé comme accessoire pour la poussette
           </li>
-        </ul>
+        </ul> -->
       </div>
       <div class="price-container">
-        <div class="prices">
-          <h2>{{ item.prix | number : "1.2-2" : "fr" }} MAD</h2>
-          <h3 *ngIf="item.tauxPromo">
+        <div class="prices" *ngIf="item.tauxPromo">
+          <h2>
             {{
               item.prix - (item.prix * item.tauxPromo) / 100
-                | number : "1.1-2" : "fr"
+                | number : "1.2-2" : "fr"
             }}
             MAD
+          </h2>
+          <h3>
+            {{ item.prix | number : "1.2-2" : "fr" }}
+            MAD
           </h3>
+        </div>
+        <div class="prices" *ngIf="!item.tauxPromo">
+          <h2>{{ item.prix | number : "1.2-2" : "fr" }} MAD</h2>
         </div>
 
         <div class="livraison">
@@ -111,9 +118,9 @@
                   Numéro de téléphone est <strong>requis</strong>
                 </mat-error>
 
-                <mat-error *ngIf="!inputForm.hasError('pattern')">
+                <!-- <mat-error *ngIf="!inputForm.hasError('pattern')">
                   Numéro de téléphone est <strong>incorrecte</strong>
-                </mat-error>
+                </mat-error> -->
               </mat-form-field>
             </ng-container>
           </div>

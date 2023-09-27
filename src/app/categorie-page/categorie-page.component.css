@@ -2,9 +2,7 @@
   max-width: 98%;
   margin-top: 20px;
 }
-.categorie-header {
-  /* width: 11rem; */
-}
+
 .categorie-header h1 {
   position: relative;
   width: fit-content;
@@ -16,15 +14,15 @@
   margin-bottom: 20px;
   padding: 0px 35px 0px 0px;
 }
-.categorie-header .product-length {
-  font-size: small;
+.categorie-header sup {
+  font-size: 12px;
+  vertical-align: super;
+  font-weight: 300;
   background-color: #f5f5f5;
   border-radius: 5px;
-  /* padding: 1px; */
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 15px;
+  /* border-radius: 19px; */
+  display: inline-block;
+  padding: 10px 8px 10px 8px;
 }
 .grid {
   display: grid;

@@ -4,7 +4,7 @@
     <div class="categorie-header">
       <h1>
         {{ categorie }}
-        <mat-chip class="product-length">{{ products?.length }}</mat-chip>
+        <sup class="product-length">{{ products?.length }}</sup>
       </h1>
     </div>
     <div class="error-message" *ngIf="products?.length == 0">

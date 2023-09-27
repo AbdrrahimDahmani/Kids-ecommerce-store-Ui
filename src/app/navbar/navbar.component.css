@@ -37,6 +37,7 @@
   display: flex;
   align-items: center;
   border-bottom: solid #dddde0 1px;
+  position: sticky;
 }
 .categorie-bar a {
   color: black;
@@ -168,6 +169,7 @@
     margin-top: 8px;
     margin-left: 0px;
     margin-bottom: 8px;
+    margin-right: 2px;
   }
   #search-form .search-input input {
     width: 52vw;

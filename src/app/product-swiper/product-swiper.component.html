@@ -13,19 +13,37 @@
         <a routerLink="/product/{{ product.id }}">
           <img mat-card-image [src]="product.image" alt="Photo of a product" />
         </a>
+        <!--
+          (mouseover)="scrollDiv(scrollingThing, 4)"
+            (mouseleave)="stopTimer(timer)"
+          <img
+          class="vue-rapide"
+          src="../../assets/images/vue-rapide.png"
+          alt="vue-rapide"
+          #scrollingThing
+        /> -->
         <span class="promoPourcentage">-{{ product.tauxPromo }}%</span>
         <mat-card-content>
           <a routerLink="/product/{{ product.id }}">
             <span>{{ product.titre }}</span>
           </a>
-          <div class="prices">
-            <span class="main-price">{{ product.prix }} MAD</span>
-
-            <span class="promo-price" *ngIf="product.tauxPromo">
+          <div class="prices" *ngIf="product.tauxPromo">
+            <span class="main-price">
               {{
                 product.prix - (product.prix * product.tauxPromo) / 100
-                  | number : "1.1-2" : "fr"
+                  | number : "1.2-2" : "fr"
               }}
+              MAD</span
+            >
+
+            <span class="promo-price" *ngIf="product.tauxPromo">
+              {{ product.prix | number : "1.2-2" : "fr" }}
+              MAD
+            </span>
+          </div>
+          <div class="prices" *ngIf="!product.tauxPromo">
+            <span class="main-price">
+              {{ product.prix | number : "1.2-2" : "fr" }}
               MAD
             </span>
           </div>
