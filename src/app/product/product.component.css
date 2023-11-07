@@ -143,3 +143,23 @@ mat-form-field {
 .thumbnail img:hover {
   border-color: #007bff;
 }
+
+@media (max-width: 564px) {
+  .product-container {
+    flex-direction: column;
+  }
+  .carousel {
+    max-width: 95vw;
+    margin-right: 2.5rem;
+  }
+  .images img {
+    width: 95vw;
+    height: auto;
+  }
+  .slider-container {
+    align-items: center;
+  }
+  /* .thumbnail-images {
+    display:;
+  } */
+}

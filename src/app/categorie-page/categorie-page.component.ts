@@ -9,7 +9,7 @@ import { CategorieProducts } from '../home-products/home-products.component';
   styleUrls: ['./categorie-page.component.css'],
 })
 export class CategoriePageComponent implements OnInit {
-  categorie: string;
+  categorie: string = '';
   filtredProducts: Array<any> = [];
   products: Array<any> = [];
   constructor(
@@ -17,7 +17,7 @@ export class CategoriePageComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.categorie = this.route.snapshot.paramMap.get('categorie');
+    this.categorie = this.route.snapshot.paramMap.get('categorie') as string;
     this.categorieService.getProductByCategorie(this.categorie).subscribe({
       next: (res) => {
         this.filtredProducts = res;

@@ -57,18 +57,4 @@ export class ProductSwiperComponent implements OnInit {
         error: (e) => console.log(e),
       });
   }
-
-  // timer: any;
-
-  // scrollDiv(elementToScroll: HTMLElement, depl: any) {
-  //   elementToScroll.scrollLeft -= depl;
-  //   console.log('scrolling...');
-  //   this.timer = setTimeout(() => {
-  //     this.scrollDiv(elementToScroll, depl);
-  //   }, 30);
-  // }
-
-  // stopTimer(timer: number) {
-  //   clearTimeout(timer);
-  // }
 }

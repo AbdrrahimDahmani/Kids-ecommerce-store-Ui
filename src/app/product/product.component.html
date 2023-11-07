@@ -45,24 +45,6 @@
       <div class="short-description">
         <p>Avantages du produit en un coup d’œil</p>
         <p>{{ item.description }}</p>
-        <!-- <ul>
-          <li>
-            Transformez le berceau en un accessoire de buggy en quelques étapes
-            simples
-          </li>
-          <li>
-            Ceinture de sécurité 5 points, barre de sécurité, frein à pied,
-            pneus avant verrouillables
-          </li>
-          <li>Confort optimal grâce à une suspension 2 fois</li>
-          <li>
-            La poussette peut être complètement pliée en quelques secondes
-          </li>
-          <li>
-            Un siège d’auto est inclus dans le cadre de la livraison, qui peut
-            être utilisé comme accessoire pour la poussette
-          </li>
-        </ul> -->
       </div>
       <div class="price-container">
         <div class="prices" *ngIf="item.tauxPromo">
@@ -155,6 +137,7 @@
                 />
 
                 <button
+                  style="width: fit-content"
                   type="button"
                   mat-icon-button
                   matPrefix
@@ -164,6 +147,7 @@
                   -
                 </button>
                 <button
+                  style="width: fit-content"
                   type="button"
                   mat-icon-button
                   matSuffix
@@ -197,6 +181,7 @@
                 Ajouter au panier
               </span>
             </button>
+            <notifier-container></notifier-container>
           </div>
         </form>
       </div>

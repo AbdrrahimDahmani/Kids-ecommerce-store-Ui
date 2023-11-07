@@ -13,15 +13,7 @@
         <a routerLink="/product/{{ product.id }}">
           <img mat-card-image [src]="product.image" alt="Photo of a product" />
         </a>
-        <!--
-          (mouseover)="scrollDiv(scrollingThing, 4)"
-            (mouseleave)="stopTimer(timer)"
-          <img
-          class="vue-rapide"
-          src="../../assets/images/vue-rapide.png"
-          alt="vue-rapide"
-          #scrollingThing
-        /> -->
+
         <span class="promoPourcentage">-{{ product.tauxPromo }}%</span>
         <mat-card-content>
           <a routerLink="/product/{{ product.id }}">

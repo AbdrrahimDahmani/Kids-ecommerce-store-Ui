@@ -1,40 +1,193 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-
-export interface PeriodicElement {
-  prix: string;
-  produit: number;
-  quantity: number;
-  soustotal: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  { produit: 1, prix: 'Hydrogen', quantity: 1.0079, soustotal: 'H' },
-  { produit: 2, prix: 'Helium', quantity: 4.0026, soustotal: 'He' },
-  { produit: 3, prix: 'Lithium', quantity: 6.941, soustotal: 'Li' },
-  { produit: 4, prix: 'Beryllium', quantity: 9.0122, soustotal: 'Be' },
-  { produit: 5, prix: 'Boron', quantity: 10.811, soustotal: 'B' },
-  { produit: 6, prix: 'Carbon', quantity: 12.0107, soustotal: 'C' },
-  { produit: 7, prix: 'Nitrogen', quantity: 14.0067, soustotal: 'N' },
-  { produit: 8, prix: 'Oxygen', quantity: 15.9994, soustotal: 'O' },
-  { produit: 9, prix: 'Fluorine', quantity: 18.9984, soustotal: 'F' },
-  { produit: 10, prix: 'Neon', quantity: 20.1797, soustotal: 'Ne' },
-];
+import { PanierService } from './panier.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NotifierService } from 'angular-notifier';
+import { CouponService } from './coupon.service';
 
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.css'],
 })
-export class PanierComponent implements OnInit {
-  /**
-   *
-   */
-  constructor(private cookieService: CookieService) {}
-  displayedColumns: string[] = ['produit', 'prix', 'quantity', 'soustotal'];
-  dataSource = ELEMENT_DATA;
+export class PanierComponent implements OnInit, AfterViewInit {
+  inputForm = new FormGroup({
+    quantity: new FormControl([Validators.required, Validators.min(1)]),
+  });
+  initialValue: number = 2;
+
+  couponData: any = [];
+  couponActive: boolean = false;
   panierData: any[] = [];
+  panierSize: number = 0;
+  prixTotal: number = 0;
+  prixTotalAvecExpidition: number = 0;
+  adresse: string = '';
+  panierVide: boolean = false;
+  promoInput = new FormGroup({
+    code: new FormControl(''),
+  });
+  constructor(
+    private panierService: PanierService,
+    private notifierService: NotifierService,
+    private couponService: CouponService
+  ) {}
+
+  ngAfterViewInit(): void {
+    if (!this.panierVide) {
+      this.getFirstRadio();
+    }
+  }
   ngOnInit(): void {
-    this.panierData = JSON.parse(this.cookieService.get('panier'));
-    console.log(this.panierData);
+    this.panierData = this.panierService.getCartItems().filter((n: any) => n);
+    this.panierSize = this.panierData.length;
+    this.panierVide = this.changePanierVideStatus(this.panierSize);
+    if (!this.panierVide) {
+      this.adresse = localStorage.getItem('adresse') as string;
+      const productQuantityMap = new Map<any, any>();
+      for (const cartItem of this.panierData) {
+        productQuantityMap.set(cartItem.id, cartItem.quantity);
+      }
+
+      // Set the initial value of the quantity input for each product
+      for (const product of this.panierData) {
+        this.inputForm.controls.quantity.setValue(
+          productQuantityMap.get(product.id),
+          { emitEvent: false }
+        );
+      }
+      this.prixTotal = this.panierService.calcTotalPrice();
+    }
+  }
+
+  updateCartItemQuantity(id: string, event: any) {
+    const element = event.currentTarget as HTMLInputElement;
+    const quantity = Number(element.value);
+    this.panierService.updateCartItemQuantity(id, quantity);
+    this.panierData.find((item) => item.id === id).quantity = quantity;
+    this.prixTotal = this.panierService.calcTotalPrice();
+    this.getFirstRadio();
+    this.notifierService.notify('success', 'Votre panier a été mis à jour !');
+  }
+  deleteProductFromCart(id: string) {
+    this.panierService.removeFromCart(id);
+
+    // Remove the product from the panierData array
+    this.panierData = this.panierData.filter((item) => item.id !== id);
+    this.prixTotal = this.panierService.calcTotalPrice();
+    this.getFirstRadio();
+    this.panierSize = this.panierData.length;
+    this.notifierService.notify(
+      'error',
+      'Ce produit a été retiré de votre panier !'
+    );
+    this.panierVide = this.changePanierVideStatus(this.panierSize);
+  }
+  deleteAllProductsFromCart() {
+    this.panierService.removeAll();
+    this.panierData = [];
+    this.prixTotal = this.panierService.calcTotalPrice();
+    this.getFirstRadio();
+    this.panierSize = this.panierData.length;
+    this.notifierService.notify('error', 'Votre panier est vide !');
+    this.panierVide = this.changePanierVideStatus(this.panierSize);
+  }
+  // onChangeRadio(event: any) {
+  //   this.prixTotalAvecExpidition = this.panierService.calcTotalPrice();
+  //   const expeditionPrix = Number(event.target.value);
+
+  //   this.prixTotalAvecExpidition += expeditionPrix;
+  // }
+  // onLoadRadio(element: HTMLInputElement) {
+  //   this.prixTotalAvecExpidition = this.panierService.calcTotalPrice();
+  //   const expeditionPrix = Number(element.value);
+  //   this.prixTotalAvecExpidition += expeditionPrix;
+  // }
+
+  onChangeRadio(event: any) {
+    if (this.couponActive) {
+      const couponDiscount =
+        this.prixTotal -
+        this.panierService.calcTotalPriceWithCoupon(
+          this.couponData.type,
+          this.couponData.value
+        );
+
+      this.prixTotalAvecExpidition =
+        this.panierService.calcTotalPrice() -
+        couponDiscount +
+        Number(event.target.value);
+    } else {
+      this.prixTotalAvecExpidition =
+        this.panierService.calcTotalPrice() + Number(event.target.value);
+    }
+  }
+  onLoadRadio(element: HTMLInputElement) {
+    if (this.couponActive) {
+      const couponDiscount =
+        this.prixTotal -
+        this.panierService.calcTotalPriceWithCoupon(
+          this.couponData.type,
+          this.couponData.value
+        );
+      this.prixTotalAvecExpidition =
+        this.panierService.calcTotalPrice() -
+        couponDiscount +
+        Number(element.value);
+    } else {
+      this.prixTotalAvecExpidition =
+        this.panierService.calcTotalPrice() + Number(element.value);
+    }
+  }
+
+  getFirstRadio() {
+    const radioButton = document.querySelector(
+      'input[type="radio"]:first-child'
+    ) as HTMLInputElement;
+    this.onLoadRadio(radioButton);
+  }
+  changePanierVideStatus(panierSize: number): boolean {
+    if (panierSize < 1) {
+      return true;
+    }
+    return false;
+  }
+  validateCouponCode() {
+    const radioButton = document.querySelector(
+      'input[type="radio"]:first-child'
+    ) as HTMLInputElement;
+    this.couponService
+      .getCouponByCode(this.promoInput.value.code as string)
+      .subscribe({
+        next: (data) => {
+          this.couponData = data;
+
+          this.couponActive = this.couponData.active;
+          const couponButton = document.querySelector(
+            '.couponBtn'
+          ) as HTMLInputElement;
+          const couponInput = document.querySelector(
+            '.couponInput'
+          ) as HTMLInputElement;
+          if (this.couponActive) {
+            couponButton.disabled = true;
+            couponInput.disabled = true;
+            console.log(this.couponData);
+            // Update the total price with the coupon discount
+            this.prixTotalAvecExpidition =
+              this.panierService.calcTotalPriceWithCoupon(
+                this.couponData.type,
+                this.couponData.value
+              );
+            this.onLoadRadio(radioButton);
+            this.notifierService.notify('success', 'Coupon activé avec succés');
+          }
+        },
+        error: (error) => {
+          console.log(error);
+          this.couponActive = false;
+          this.notifierService.notify('error', 'Coupon non valide');
+        },
+      });
   }
 }
