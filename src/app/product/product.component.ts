@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.model';
 import { JsonPipe } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
+import { CartItem, PanierService } from '../panier/panier.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-product',
@@ -18,8 +20,8 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  @ViewChild('slickComponent') slickModal: SlickCarouselComponent;
-  paniers: any[] = [];
+  @ViewChild('slickComponent') slickModal!: SlickCarouselComponent;
+  panier: CartItem;
   currentSlideIndex = 0;
   slickCarouselConfig = {
     infinite: true,
@@ -28,33 +30,47 @@ export class ProductComponent implements OnInit {
     arrows: false,
   };
 
-  id: string;
+  id: string = '';
+  tauxPromo: number = 0;
+  titre: string = '';
+  image: string = '';
+  prix: number = 0;
 
   initialValue = 1;
-  reactiveForm: FormGroup;
+  // reactiveForm: FormGroup;
 
   product: any;
   galeries: any[] = [];
   constructor(
-    private formBuilder: FormBuilder,
     private productService: ProductService,
     private route: ActivatedRoute,
-    private cookie: CookieService
-  ) {}
+    private panierService: PanierService,
+    private notifierService: NotifierService
+  ) {
+    this.panier = {
+      id: '',
+      title: '',
+      image: '',
+      price: 0,
+      quantity: 0,
+    };
+  }
 
   inputForm = new FormGroup({
     fullName: new FormControl(
-      this.cookie.get('nom')
-        ? this.cookie.get('nom') + ' ' + this.cookie.get('prenom')
+      localStorage.getItem('nom')
+        ? localStorage.getItem('nom') + ' ' + localStorage.getItem('prenom')
         : null,
       [Validators.required]
     ),
     phone: new FormControl(
-      this.cookie.get('telephone') ? this.cookie.get('telephone') : null,
+      localStorage.getItem('telephone')
+        ? localStorage.getItem('telephone')
+        : null,
       [Validators.required]
     ),
     adress: new FormControl(
-      this.cookie.get('adresse') ? this.cookie.get('adresse') : null,
+      localStorage.getItem('adresse') ? localStorage.getItem('adresse') : null,
       [Validators.required]
     ),
     quantity: new FormControl(1, [Validators.required, Validators.min(1)]),
@@ -64,29 +80,64 @@ export class ProductComponent implements OnInit {
     this.inputForm.controls.phone.addValidators(
       Validators.pattern('[6-9]\\d{9}')
     );
-    console.log(this.inputForm.controls.phone.errors);
-    let separatedName = this.inputForm.value.fullName.split(' ');
-    let quantite = this.inputForm.value.quantity;
-    this.paniers.push({
-      product: this.id,
-      quantite: quantite,
-    });
 
-    this.cookie.set('nom', separatedName[0]);
-    this.cookie.set('prenom', separatedName[1]);
-    this.cookie.set('telephone', this.inputForm.value.phone);
-    this.cookie.set('adresse', this.inputForm.value.adress);
-    this.cookie.set('panier', JSON.stringify(this.paniers));
-    console.log(this.cookie.getAll());
+    let separatedName = this.inputForm.value.fullName?.split(' ');
+    let quantite = this.inputForm.value.quantity;
+    if (quantite) {
+      if (this.panierService.findCartById(this.id)) {
+        this.panierService.updateCartItemQuantity(this.id, quantite);
+        this.panierService.addToCart(this.panier);
+      } else if (this.product.tauxPromo) {
+        let promoPrice =
+          this.product.prix -
+          (this.product[0].prix * this.product[0].tauxPromo) / 100;
+        this.panier = {
+          id: this.id,
+          title: this.product[0].titre,
+          price: promoPrice,
+          image: this.product[0].image,
+          quantity: quantite,
+        };
+        this.panierService.addToCart(this.panier);
+      } else {
+        this.panier = {
+          id: this.id,
+          title: this.product[0].titre,
+          price: this.product[0].prix,
+          image: this.product[0].image,
+          quantity: quantite,
+        };
+        this.panierService.addToCart(this.panier);
+      }
+    }
+
+    if (
+      separatedName &&
+      this.inputForm.value.phone &&
+      this.inputForm.value.adress
+    ) {
+      //user info
+      localStorage.setItem('nom', separatedName[0]);
+      localStorage.setItem('prenom', separatedName[1]);
+
+      localStorage.setItem('telephone', this.inputForm.value.phone);
+      localStorage.setItem('adresse', this.inputForm.value.adress);
+    }
+
+    //handle notification service
+    this.notifierService.notify(
+      'success',
+      'Produit ajouté au panier avec succès !'
+    );
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id') as string;
+
     this.productService.getProductById(this.id).subscribe({
       next: (res) => {
         this.product = res;
         this.product = Array.of(this.product);
-        console.log(this.product);
       },
       error: (err) => console.log(err),
     });
@@ -99,7 +150,6 @@ export class ProductComponent implements OnInit {
   }
 
   showImage(index: number): void {
-    console.log(index);
     this.slickModal.slickGoTo(index);
   }
 }

@@ -4,7 +4,7 @@
     <div class="categorie-header">
       <h1>
         {{ categorie }}
-        <sup class="product-length">{{ products?.length }}</sup>
+        <sup class="product-length">{{ products.length }}</sup>
       </h1>
     </div>
     <div class="error-message" *ngIf="products?.length == 0">
@@ -14,7 +14,7 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="grid" *ngIf="products?.length > 0">
+    <div class="grid" *ngIf="products.length > 0">
       <div class="item" *ngFor="let product of products">
         <ng-container>
           <mat-card class="product-card">
