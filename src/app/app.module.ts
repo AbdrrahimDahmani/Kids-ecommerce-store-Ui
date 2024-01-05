@@ -1,3 +1,8 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
+
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,7 +18,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
+import {
+  MAT_RADIO_DEFAULT_OPTIONS,
+  MatRadioModule,
+} from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -72,6 +80,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CategoriePageComponent } from './categorie-page/categorie-page.component';
 import { PanierComponent } from './panier/panier.component';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { CheckoutComponent } from './checkout/checkout.component';
 registerLocaleData(localeFr, 'fr');
 
 const customNotifierOptions: NotifierOptions = {
@@ -131,8 +140,13 @@ const customNotifierOptions: NotifierOptions = {
     DescriptionProductComponent,
     CategoriePageComponent,
     PanierComponent,
+    CheckoutComponent,
   ],
   imports: [
+    CdkTableModule,
+    CdkTreeModule,
+    DragDropModule,
+    ScrollingModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -183,7 +197,13 @@ const customNotifierOptions: NotifierOptions = {
     ReactiveFormsModule,
     NotifierModule.withConfig(customNotifierOptions),
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    {
+      provide: MAT_RADIO_DEFAULT_OPTIONS,
+      useValue: { color: 'primary' },
+    },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

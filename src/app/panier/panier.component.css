@@ -23,7 +23,7 @@
 }
 
 .btn-valide {
-  background-color: #500c7c;
+  background-color: #650da7;
   color: white;
 }
 
@@ -59,4 +59,7 @@
   .buttons {
     display: none;
   }
+}
+hr {
+  height: 0px;
 }
