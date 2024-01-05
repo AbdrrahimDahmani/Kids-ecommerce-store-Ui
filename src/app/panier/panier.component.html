@@ -168,7 +168,7 @@
               <!-- Expedition section -->
               <div class="d-flex justify-content-between">
                 <p class="mb-2">Expédition</p>
-                <div class="radio-container">
+                <div class="radio-container" *ngIf="prixTotal < 400">
                   <div class="form-check mb-2">
                     <input
                       class="form-check-input"
@@ -202,15 +202,24 @@
                   </div>
                   Livraison à <span class="fw-bold">{{ adresse }}</span>
                 </div>
+                <div *ngIf="prixTotal > 400">Livraison gratuite</div>
               </div>
               <hr />
               <div class="d-flex justify-content-between">
                 <p class="mb-2">Prix Total:</p>
-                <p class="mb-2 fw-bold">{{ prixTotalAvecExpidition }} dh</p>
+                <p class="mb-2 fw-bold" *ngIf="prixTotal < 400">
+                  {{ prixTotalAvecExpidition }} dh
+                </p>
+                <p class="mb-2 fw-bold" *ngIf="prixTotal > 400">
+                  {{ prixTotal }} dh
+                </p>
               </div>
 
               <div class="mt-3">
-                <a href="#" class="btn-valide btn w-100 shadow-0 mb-2">
+                <a
+                  (click)="validePanier()"
+                  class="btn-valide btn w-100 shadow-0 mb-2"
+                >
                   Valider Panier
                 </a>
                 <a routerLink="/" class="btn btn-light w-100 border mt-2">
@@ -238,3 +247,4 @@
     </div>
   </section>
 </section>
+<app-footer></app-footer>

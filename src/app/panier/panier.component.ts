@@ -4,6 +4,7 @@ import { PanierService } from './panier.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
 import { CouponService } from './coupon.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panier',
@@ -30,11 +31,12 @@ export class PanierComponent implements OnInit, AfterViewInit {
   constructor(
     private panierService: PanierService,
     private notifierService: NotifierService,
-    private couponService: CouponService
+    private couponService: CouponService,
+    private router: Router
   ) {}
 
   ngAfterViewInit(): void {
-    if (!this.panierVide) {
+    if (!this.panierVide && this.prixTotal < 400) {
       this.getFirstRadio();
     }
   }
@@ -92,17 +94,6 @@ export class PanierComponent implements OnInit, AfterViewInit {
     this.notifierService.notify('error', 'Votre panier est vide !');
     this.panierVide = this.changePanierVideStatus(this.panierSize);
   }
-  // onChangeRadio(event: any) {
-  //   this.prixTotalAvecExpidition = this.panierService.calcTotalPrice();
-  //   const expeditionPrix = Number(event.target.value);
-
-  //   this.prixTotalAvecExpidition += expeditionPrix;
-  // }
-  // onLoadRadio(element: HTMLInputElement) {
-  //   this.prixTotalAvecExpidition = this.panierService.calcTotalPrice();
-  //   const expeditionPrix = Number(element.value);
-  //   this.prixTotalAvecExpidition += expeditionPrix;
-  // }
 
   onChangeRadio(event: any) {
     if (this.couponActive) {
@@ -189,5 +180,25 @@ export class PanierComponent implements OnInit, AfterViewInit {
           this.notifierService.notify('error', 'Coupon non valide');
         },
       });
+  }
+  validePanier() {
+    if (this.panierSize > 0) {
+      const cartItems = this.panierService.getCartItems();
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      if (this.prixTotal < 400) {
+        const expeditionType = document.querySelector(
+          'input[type="radio"]:checked'
+        ) as HTMLInputElement;
+        const selectedExpeditionType = expeditionType.value;
+        localStorage.setItem('selectedExpeditionType', selectedExpeditionType);
+      }
+
+      if (this.couponActive) {
+        localStorage.setItem('couponActive', String(this.couponActive));
+        localStorage.setItem('couponData', JSON.stringify(this.couponData));
+      }
+      this.router.navigate(['/checkout']);
+    }
   }
 }

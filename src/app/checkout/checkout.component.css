@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* html {
+  font-size: 14px;
+} */
+
+.container-checkout {
+  padding: 0px 5rem;
+  font-size: small;
+}
+.checkout-title {
+  font-family: "Poppins", sans-serif;
+  font-size: xx-large;
+  font-weight: 600;
+}
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+.badge {
+  background-color: #650da7;
+  font-size: 16px;
+}
+div label {
+  font-size: 14px;
+}
+.product-title {
+  font-family: "Roboto", sans-serif;
+  font-size: small;
+}
+.facture-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #2d054c;
+}
+.commande-row {
+  border: solid 2px #650da7;
+  padding: 25px 25px;
+}
+.commande-row .fw-bold {
+  color: #2d054c;
+  font-size: 14px;
+  font-weight: 600 !important;
+}
+.needs-validation input {
+  height: 45px;
+}
+
+.needs-validation div input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.needs-validation label {
+  margin-bottom: 5px;
+}
+/* .btn-checkout {
+  width: 24vw;
+  height: 7vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  background-color: #650da7;
+  border: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  text-transform: none;
+} */
+.note-area {
+  height: 20vh;
+}
+.btn-valide {
+  background-color: #650da7;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  text-transform: none;
+}
+.back-btn {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  text-transform: none;
+}
+.note {
+  display: block;
+  font-size: smaller;
+  color: #ccc;
+}
+::ng-deep .radioPannel > .mat-expansion-indicator:after {
+  color: white !important;
+}
+.privacy-text {
+  font-family: "Roboto", sans-serif;
+  margin-top: 15px;
+  color: #7b99a2;
+}
+.check label {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  padding-left: 15px;
+  letter-spacing: 0.5px;
+}
+hr {
+  height: 0px;
+}
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  .container-checkout {
+    padding: 0px 1rem;
+  }
+}
